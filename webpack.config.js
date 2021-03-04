@@ -80,11 +80,20 @@ module.exports = {
     new CleanWebpackPlugin({
       verbose: true,
     }),
+    // pindahin ini ke folder dist
     new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(environment.paths.source, "images", "content"),
           to: path.resolve(environment.paths.output, "images", "content"),
+          toType: "dir",
+          globOptions: {
+            ignore: ["*.DS_Store", "Thumbs.db"],
+          },
+        },
+        {
+          from: path.resolve(environment.paths.source, "images", "design"),
+          to: path.resolve(environment.paths.output, "images", "design"),
           toType: "dir",
           globOptions: {
             ignore: ["*.DS_Store", "Thumbs.db"],
